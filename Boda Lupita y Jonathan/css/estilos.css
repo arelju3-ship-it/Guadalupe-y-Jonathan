@@ -1,0 +1,656 @@
+:root {
+    --blanco: #fff;
+    --cafe: #f2e6de;
+    --azul: #11111a;
+    --oscuro: #000;
+    --gris: #23282b;
+    --grismedio: #c6c3c3;
+    --terracota: #AD5642;
+    --umber: #3d271e;
+    --toasted: #d1b69d;
+    --verde: #507f55;
+    --claro: #f3e6de;
+    --naranja: #eab68b;
+
+
+    /* REVISIÓN: Asegúrate de usar 'Playfair Display' exacto como viene de Google Fonts */
+    --titulos: 'Updock', cursive;
+    --parrafos: 'EB Garamond', serif;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    /* 1rem = 10px */
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: var(--parrafos);
+    background-color: var(--cafe);
+    /* Fondo café detrás de la tarjeta en PC */
+    color: var(--umber);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 4rem 2rem;
+    /* Espacio perimetral del cuadro en PC */
+    transition: padding 0.3s ease, background-color 0.3s ease;
+
+}
+
+/* Tarjeta principal de la invitación */
+.contenido-invitacion {
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.755), rgba(255, 255, 255, 0.4)),
+        url('../imagenes/fondo.jpg');
+    /* El cuadro blanco */
+    border-radius: 1.5rem;
+    /* Esquinas redondeadas */
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    /* Sombra flotante */
+    padding: 4rem 2rem;
+    width: 100%;
+    max-width: 500px;
+    /* Tamaño ideal simulando un móvil flotando en computadoras */
+    text-align: center;
+    border: 1px solid var(--grismedio);
+    overflow: hidden;
+    /* Evita que las imágenes internas rompan el redondeado */
+}
+
+.encabezado {
+    background-image: url('../imagenes/principal1.png');
+    background-size: contain;
+    background-position: top center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.encabezado h1 {
+    font-family: var(--titulos);
+    font-size: 5rem;
+    font-weight: 400;
+    color: var(--umber);
+    margin: 0 0 2rem 0;
+
+}
+
+
+
+.encabezado h4 {
+    margin-top: 7rem;
+    font-size: clamp(1.5rem, 4vw, 3.5rem);
+
+}
+
+.encabezado p {
+    font-size: clamp(1.5rem, 2vw, 3.5rem);
+
+}
+
+/* --- MEDIAS QUERIES UNIFICADOS PARA MÓVILES (Menos de 768px) --- */
+@media (max-width: 500px) {
+    body {
+        padding: 0;
+        /* Eliminamos márgenes externos para ganar toda la pantalla */
+        background-color: var(--blanco);
+        /* El fondo general pasa a ser blanco */
+    }
+
+    .contenido-invitacion {
+        max-width: 100%;
+        /* Abarca el total del ancho del celular */
+        border-radius: 0;
+        /* Quitamos bordes redondeados */
+        border: none;
+        /* Quitamos bordes físicos */
+        box-shadow: none;
+        /* Quitamos sombras para que se fusione con la pantalla */
+        padding: 0 0 4rem 0;
+        /* Quitamos padding lateral para que el header toque los bordes */
+    }
+
+    .encabezado {
+        width: 100%;
+        height: auto;
+        /* 3. FIX: Let height adjust automatically */
+        aspect-ratio: 4 / 5;
+        /* Keeps the image frame perfectly aligned with no margins */
+        background-size: 95% auto;
+        /* Forces image to use 100% width cleanly */
+        background-position: center 6px;
+        padding: 2rem;
+
+    }
+
+
+
+    .encabezado h1 {
+        display: flex;
+        flex-direction: column;
+        /* Alinea las palabras una debajo de otra */
+        align-items: center;
+        /* Las centra perfectamente */
+        gap: 0.5rem;
+        /* Agrega un pequeño espacio vertical entre cada línea */
+        font-size: 4.5rem;
+        /* Ajusta el tamaño para que quepa bien en pantallas móviles */
+        line-height: 1.0;
+        /* Reduce el espacio entre líneas para que se vea más unido */
+    }
+
+    .encabezado h1 span {
+        display: block;
+        /* Fuerza al símbolo '&' a ocupar su propia línea */
+        font-size: 3.5rem;
+        /* Opcional: Hace el '&' un poco más pequeño para mejorar el diseño */
+    }
+
+
+    /* Agregamos margen interno de seguridad a los textos inferiores para que no peguen al vidrio del celular */
+    .contenedor-audio,
+    .fecha,
+    .ubicaciones,
+    .regalo,
+    .amazon {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .ubicaciones {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .opcion-regalo {
+        flex-direction: column;
+    }
+}
+
+/* Corrección menor para sintaxis rota en tu código original (@media max-width 68px corregido a 768px) */
+@media (max-width: 768px) {
+    .lugar-boton {
+        flex-direction: column;
+        /* Hace que los botones se apilen verticalmente en móviles */
+        gap: 20px;
+        padding: 10px;
+        width: 100%;
+    }
+}
+
+/* --- Resto de tus componentes estables --- */
+.contenedor-audio {
+    margin-top: 2rem;
+    width: 100%;
+    background-color: var(--umber);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+}
+
+.contenedor-audio audio {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    display: block;
+}
+
+.texto-frase h3 {
+    font-size: clamp(1rem, 2vw + 1rem, 3rem);
+    width: 95%;
+    padding: 20px;
+
+
+}
+
+.texto-dias h2 {
+    font-size: clamp(3.5rem, 2vw + 1rem, 8rem);
+
+
+
+}
+
+.fecha {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 50px;
+
+}
+
+.cuenta-regresiva {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    width: 90%;
+    max-width: 900px;
+    font-family: var(--parrafos);
+}
+
+.cuenta-regresiva div span {
+    font-weight: 600;
+    font-size: clamp(3rem, 1.5vw + 3rem, 5rem);
+}
+
+.cuenta-regresiva div p {
+    font-size: clamp(1rem, 2vw + 1rem, 5rem);
+}
+
+
+.ubicaciones {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    /* Obliga a que ambas columnas tengan la misma altura total */
+    gap: 60px;
+    margin-top: 10px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.lugar {
+    flex: 1;
+    /* Hace que ambas columnas midan exactamente lo mismo de ancho (50% cada una) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* Alinea todo desde arriba uniformemente */
+}
+
+.lugar img {
+    height: 150px;
+    width: 150px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+/* --- CONTROL TOTAL FILA POR FILA --- */
+
+.lugar h2 {
+    font-family: var(--titulos);
+    font-weight: normal;
+    font-size: 5rem;
+    margin: 0 0 10px 0;
+    width: 100%;
+
+    /* Si un título tiene 2 líneas y el otro 1, este alto absorbe la diferencia */
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lugar h3 {
+    font-family: var(--parrafos);
+    font-size: 2rem;
+    margin: 0 0 0px 0;
+    width: 100%;
+
+    /* Alto fijo para que el inicio de los párrafos coincida perfectamente */
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lugar p {
+    font-family: var(--parrafos);
+    margin: 0 0 5px 0;
+    width: 100%;
+
+    /* Alto fijo para el párrafo. Si un texto es más largo, no empujará los botones */
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    /* Aumentado para asegurar que siempre esté por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 5% auto;
+    /* Centra el modal en la pantalla con menos espacio arriba */
+    padding: 20px;
+    width: 80%;
+    height: 80%;
+    /* Le da una altura sólida para que quepa todo sin desbordar */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* 1. Alinea todos los contenedores hijos a la izquierda */
+    text-align: left;
+    /* 2. Asegura que el texto comience a la izquierda */
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 10;
+    line-height: 1;
+}
+
+.modal-texto * {
+    text-align: left !important;
+    margin: 0 0 4px 0 !important;
+    /* Espacio mínimo y compacto hacia abajo */
+    padding: 0 !important;
+    /* 💡 CAMBIADO: Forzamos a que sea 0 para quitar todo el aire */
+    line-height: 1.2;
+    /* Hace que los renglones estén bien juntos */
+}
+
+
+/* --- EL MAPA SE ADAPTA AL ESPACIO RESTANTE --- */
+iframe {
+    width: 100%;
+    height: 0;
+    flex-grow: 1;
+    /* Absorbe todo el espacio que tus textos limpios acaban de liberar */
+    border: none;
+    margin-top: 10px;
+}
+
+
+
+
+.lugar-boton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 10px 0;
+    width: 100%;
+
+    /* Actúa como un imán que empuja los botones al fondo exacto de la tarjeta .lugar */
+    margin-top: auto;
+}
+
+.boton1,
+.boton2 {
+    color: black;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.3s ease;
+}
+
+
+
+.boton1 img,
+.boton2 img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 8px;
+}
+
+.boton1:hover,
+.boton2:hover {
+    transform: scale(1.1);
+}
+
+
+
+
+
+.vestimenta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+    text-align: center;
+
+
+}
+
+
+
+.vestimenta h2 {
+    font-family: var(--titulos);
+    font-weight: normal;
+    font-size: 4.3rem;
+    margin: 0 0 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+
+}
+
+.vestimenta img {
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+.vestimenta p,
+.vestimenta h4 {
+    font-family: var(--parrafos);
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 90%;
+
+}
+
+
+.album {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+    text-align: center;
+
+}
+
+.album img {
+    width: 90px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.album h2 {
+    font-family: var(--titulos);
+    font-weight: normal;
+    font-size: 5rem;
+    margin: 0 0 0px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.album p,
+.album h4 {
+    font-family: var(--parrafos);
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 95%;
+
+}  
+/* --- Regalos --- */
+.regalo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.regalo img {
+    width: 90px;
+    height: auto;
+    object-fit: contain;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.regalo img:hover {
+    transform: scale(1.05);
+}
+
+.regalo h2 {
+    font-family: var(--titulos);
+    font-weight: normal;
+    font-size: 5rem;
+    margin: 0 0 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+
+}
+
+.regalo p {
+    font-size: clamp(1rem, 1vw + 1.3rem, 3rem);
+    width: 90%;
+}
+
+.opcion-regalo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    text-align: center;
+    gap: 40px;
+}
+
+/* Modales adicionales */
+.modal4 {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-contenido4 {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: aparecer4 0.3s ease;
+    will-change: transform, opacity;
+}
+
+.cerrar-modal4 {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cerrar-modal4:hover {
+    color: var(--umber);
+}
+
+@keyframes aparecer4 {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Sección de Amazon */
+.amazon {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+    font-family: var(--parrafos);
+}
+
+.amazon img {
+    width: 80px;
+    height: auto;
+    object-fit: contain;
+    margin: 10px;
+}
+
+.amazon p {
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.btn-copiar,
+.amazon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.amazon-link {
+    color: #111111;
+    background-color: #ff9900;
+    /* Reconstruido para evitar corte de sintaxis anterior */
+}

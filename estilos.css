@@ -494,6 +494,23 @@ iframe {
     margin-top: 20px;
 }
 
+.album1 {
+    width: 90px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    object-fit: contain;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; /* Se añade 'ease' para suavizar */
+}
+
+/* Cambia '.album1 img:hover' por '.album1:hover' */
+.album1:hover {
+    transform: scale(1.05);
+}
+
+
 .album h2 {
     font-family: var(--titulos);
     font-weight: normal;

@@ -494,6 +494,7 @@ iframe {
     margin-top: 20px;
 }
 
+/* Cambia '.album1 img' por '.album1' */
 .album1 {
     width: 90px;
     margin-bottom: 20px;
@@ -502,7 +503,8 @@ iframe {
     cursor: pointer;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease; /* Se añade 'ease' para suavizar */
+    transition: transform 0.3s ease;
+    /* Se añade 'ease' para suavizar */
 }
 
 /* Cambia '.album1 img:hover' por '.album1:hover' */
